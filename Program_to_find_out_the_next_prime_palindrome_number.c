@@ -1,34 +1,36 @@
 #include<stdio.h>
 int main()
 {
-    int m,n,i,rem,res,q,s;
-    scanf("%d",&m);
-    for(n=m+1;n<=100000;n++)
+    int n,i,r,m,rev=0,temp,fact=0;
+    scanf("%d",&n);
+    i=n+1;
+    while(i>0)
     {
-        s=1;
-        for(i=2;i<=n/2;i++)
+        rev=0;
+        temp=i;
+        fact=0;
+        while(temp>0)
         {
-            if(n%i==0)
+            r=temp%10;
+            rev=(rev*10)+r;
+            temp/=10;
+        }
+        if(i==rev)
+        {
+            for(m=1;m<=i;m++)
             {
-                s=0;
+                if(i%m==0)
+                {
+                    fact++;
+                }
+            }
+            if(fact==2)
+            {
+                printf("%d",i);
                 break;
             }
         }
-        if(s==1)
-        {
-            res=0;
-            q=n;
-            while(q>0)
-            {
-                rem=q%10;
-                res=(res*10)+rem;
-                q=q/10;
-            }
-            if(res==n)
-            {
-                printf("%d",n);
-                break;
-            }
-        }
+        i++;
     }
+    return 0;
 }
