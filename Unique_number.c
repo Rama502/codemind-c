@@ -22,4 +22,5 @@ int main()
     {
         printf("Unique Number");
     }
+    return 0;
 }
