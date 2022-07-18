@@ -1,29 +1,20 @@
 #include<stdio.h>
+#include<string.h>
+#include<math.h>
 int main()
 {
-    int n,d,a[100],i,j;
-    scanf("%d",&n);
-    i=0;
-    while(n!=0)
+    char s[100];
+    int i,n;
+    scanf("%s",s);
+    n=strlen(s);
+    for(i=0;i<n;i++)
     {
-        d=n%10;
-        n=n/10;
-        a[i]=d;
-        i++;
-    }
-    for(j=i-1;j>=0;j--)
-    {
-        //for(int k=0;k<i;k++)
+        if(s[i]=='6')
         {
-            if(a[j]==6)
-            {
-                a[j]=9;
-                break;
-            }
+            s[i]='9';
+            break;
         }
     }
-    for(j=i-1;j>=0;j--)
-    {
-        printf("%d",a[j]);
-    }
+    printf("%s",s);
+    return 0;
 }
