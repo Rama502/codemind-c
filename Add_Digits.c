@@ -1,22 +1,26 @@
 #include<stdio.h>
-int sum(int n)
+int calculateDigits(int num)
 {
-    int r,sum=0;
-    while(n>0)
+    int sum=0;
+    while(num!=0)
     {
-        r=n%10;
-        n=n/10;
-        sum+=r;
+        sum+=(num%10);
+        num/=10;
     }
+    if(sum>=10)
+    calculateDigits(sum);
+    else
     return sum;
 }
 int main()
 {
-    int n;
+    int n,sum;
     scanf("%d",&n);
-    while(n>9)
+    if(n<0)
     {
-        n=sum(n);
+        return -1;
     }
-    printf("%d",n);
+    sum=calculateDigits(n);
+    printf("%d",sum);
+    return 0;
 }
