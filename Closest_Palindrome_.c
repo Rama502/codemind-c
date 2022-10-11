@@ -1,49 +1,55 @@
 #include<stdio.h>
-int rev(int num)
-{
-    int sum=0,r;
-    while(num>0)
-    {
-        r=num%10;
-        sum=(sum*10)+r;
-        num/=10;
-    }
-    return sum;
-}
 int main()
 {
-    int a;
-    scanf("%d",&a);
-    int i,l=0,f=0,dl=0,df=0;
-    for(i=a-1;i>=0;i--)
+    int n,i,j,rev=0,r,temp,next,prev,diff;
+    scanf("%d",&n);
+    i=n+1;
+    j=n-1;
+    while(i>0)
     {
-        if(rev(i)==i)
+        rev=0;
+        temp=i;
+        while(temp>0)
         {
-            f=i;
+            r=temp%10;
+            rev=(rev*10)+r;
+            temp/=10;
+        }
+        if(i==rev)
+        {
+            next=i;
             break;
         }
+        i++;
     }
-    for(i=a+1;i<=10000;i++)
+    while(j>0)
     {
-        if(rev(i)==i)
+        rev=0;
+        temp=j;
+        while(temp>0)
         {
-            l=i;
+            r=temp%10;
+            rev=(rev*10)+r;
+            temp/=10;
+        }
+        if(j==rev)
+        {
+            prev=j;
             break;
         }
+        j--;
     }
-    df=a-f;
-    dl=l-a;
-    if(df==dl)
+    if(next-n==n-prev)
     {
-        printf("%d %d",f,l);
+        printf("%d %d",prev,next);
     }
-    else if(df>dl)
+    else if(next-n>=n-prev)
     {
-        printf("%d",l);
+        printf("%d",prev);
     }
     else
     {
-        printf("%d",f);
+        printf("%d",next);
     }
     return 0;
 }
