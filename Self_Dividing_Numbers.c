@@ -1,33 +1,32 @@
 #include<stdio.h>
 int main()
 {
-    int a,b,i,p,t,s=0;
+    int a,b,i,r,num,temp,sum,count;
     scanf("%d%d",&a,&b);
     for(i=a;i<=b;i++)
     {
-        int c=0,s=0;;
-        t=i;
-        while(t)
+        if(i%10!=0)
         {
-            p=t%10;
-            t=t/10;
-            s++;
-            if(p==0)
+            sum=0;count=0;num=i;temp=i;
+            while(num>0)
             {
-                break;
-            }
-            else
-            {
-                if(i%p==0)
+                r=num%10;
+                sum++;
+                if(r==0)
                 {
-                    c++;
+                    break;
                 }
+                if(temp%r==0)
+                {
+                    count++;
+                }
+                num/=10;
             }
-        }
-        //printf("%d ",s);
-        if(s==c)
-        {
-            printf("%d ",i);
+            if(sum==count)
+            {
+                printf("%d ",i);
+            }
         }
     }
+    return 0;
 }
