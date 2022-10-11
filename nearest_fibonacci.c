@@ -1,40 +1,31 @@
 #include<stdio.h>
 int main()
 {
-    int a;
-    scanf("%d",&a);
-    int arr[100],i,j;
-    int fa=0,fb=1,temp;
-    for(i=0;i<100;i++)
+    int n,a=0,b=1,c,min,max;
+    scanf("%d",&n);
+    for(int i=1;;i++)
     {
-        arr[i]=fa;
-        temp=fa+fb;
-        fa=fb;
-        fb=temp;
-    }
-    int dl=0,df=0,fib=0;
-    for(i=0;i<100;i++)
-    {
-        if(arr[i]>a)
+        c=a+b;
+        a=b;
+        b=c;
+        if(c<n)
+        min=c;
+        else
         {
-            dl=arr[i]-a;
-            df=a-arr[i-1];
-            if(dl==df)
-            {
-                printf("%d %d",arr[i-1],arr[i]);
-            }
-            else if(dl>df)
-            {
-                fib=i-1;
-                printf("%d",arr[fib]);
-            }
-            else
-            {
-                fib=i;
-                printf("%d",arr[fib]);
-            }
+            max=c;
             break;
         }
     }
-    return 0;
+    int r1=n-min;
+    int r2=max-n;
+    if(r1>r2)
+    {
+        printf("%d",max);
+    }
+    else if(r1==r2)
+    {
+        printf("%d %d",min,max);
+    }
+    else
+    printf("%d",min);
 }
