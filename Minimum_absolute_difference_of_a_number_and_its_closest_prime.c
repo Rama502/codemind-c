@@ -1,48 +1,54 @@
 #include<stdio.h>
 int main()
 {
-    int n,i,j,k,np,sp,c=0,d,e;
+    int a,b,f=0,n,i,j,fwd,bwd;
     scanf("%d",&n);
-    for(j=n;j>=n-10;j--)
+    a=n;b=n;
+    while(1)
     {
-        c=0;
-        for(k=1;k<=j;k++)
+        f=0;
+        for(i=1;i<=a;i++)
         {
-            if(j%k==0)
-        {
-                c++;
-            }
-        }
-        if(c==2)
-        {
-            np=j;
-            d=n-np;
-            break;
-        }
-    }
-    for(j=n;j<=n+10;j++)
-    {
-    	c=0;
-        for(k=1;k<=j;k++)
-        {
-            if(j%k==0)
+            if(a%i==0)
             {
-                c++;
+                f++;
             }
         }
-        if(c==2)
+        if(f==2)
         {
-            sp=j;
-            e=sp-n;
+            fwd=a-n;
             break;
         }
+        a++;
     }
-    if(d<e || d==e)
+    while(1)
     {
-        printf("%d",d);
+        f=0;
+        for(i=1;i<b;i++)
+        {
+            if(b%i==0)
+            {
+                f++;
+            }
+        }
+        if(f==2)
+        {
+            bwd=n-b;
+            break;
+        }
+        b--;
+    }
+    if(fwd==0 && bwd==0)
+    {
+        printf("%d",fwd);
+    }
+    else if(fwd<bwd)
+    {
+        printf("%d",fwd);
     }
     else
     {
-        printf("%d",e);
+        printf("%d",bwd);
     }
+    return 0;
 }
