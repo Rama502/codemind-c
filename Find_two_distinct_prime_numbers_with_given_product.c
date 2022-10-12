@@ -1,33 +1,27 @@
 #include<stdio.h>
 int main()
 {
-    int n,count=0,k=0,temp,i,a[100],j,b[100],c=0;
+    int n,i,t=0,j;
     scanf("%d",&n);
-    for(i=1;i<=n;i++)
-    {   count=0;
-        for(j=1;j<=i;j++)
-        {
-            if(i%j==0)
-            count++;
-        }
-        if(count==2)
-        {
-        b[k]=i;
-        k++;
-        }
-    }
-    for(i=0;i<k;i++)
+    for(i=2;i<n;i++)
     {
-        for(j=i+1;j<k;j++)
+        if(n%i==0)
         {
-            if(b[i]*b[j]==n)
+            for(j=1;j<=i;j++)
             {
-            printf("%d %d",b[i],b[j]);
-            c++;
-            break;
+                if(i%j==0)
+                t++;
+            }
+            if(t==2)
+            {
+                printf("%d %d",i,n/i);
+                return 0;
             }
         }
+        if(i==n-1)
+        {
+            printf("-1");
+        }
     }
-    if(c==0)
-    printf("-1");
+    return 0;
 }
